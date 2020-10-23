@@ -92,7 +92,11 @@ var reverse = function (string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
+var palindrome = function (string) {
+  var chars = String(string).toLowerCase().split('');
+  if (chars[0] !== chars[chars.length - 1]) { return false; } //is not palindrome
+  if (chars.length === 1) { return true; }
+  return palindrome(string.slice(1, chars.length - 1));
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
