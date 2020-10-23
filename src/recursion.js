@@ -20,17 +20,28 @@ var factorial = function (n) {
 // sum([1,2,3,4,5,6]); // 21
 var sum = function (array) {
   if (array.length === 0) { return 0; }
-  debugger;
   return (array.slice(-1)[0] + sum(array.slice(0, -1)));
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
-var arraySum = function(array) {
+var arraySum = function (array) {
+  // doubly recurse?
+  debugger;
+  if (!array.length) { return 0; } // base case
+  var sliced = array.slice(-1)[0];
+  console.log(sliced);
+  if (Array.isArray(sliced)) {
+    sliced = arraySum(sliced);
+  }
+  return (sliced + arraySum(array.slice(0, -1)));
 };
 
 // 4. Check if a number is even.
-var isEven = function(n) {
+var isEven = function (n) {
+  if (n === 0) { return true; }
+  if (Math.abs(n) === 1) { return false; }
+  return isEven(Math.abs(n) - 2);
 };
 
 // 5. Sum all integers below a given integer.
